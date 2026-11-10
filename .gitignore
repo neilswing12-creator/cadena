@@ -1,0 +1,11 @@
+node_modules
+.next
+data/*.db
+data/*.db-*
+data/*.building*
+.env*
+data/demo-signing-key.pem
+data/export/
+.next-build
+.next-prev
+*.tsbuildinfo

@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { text-wrap: pretty; @apply bg-canvas text-ink font-sans text-[0.9375rem] leading-normal antialiased; }
+  a { @apply text-ink underline-offset-[3px] hover:underline; }
+  .tbl td a, .row a, main p a, main li a, main dd a { @apply underline decoration-[#c4c4c4] decoration-1 hover:decoration-ink; }
+  a.tab, a.btn, a.btn-primary, a.pill, a.card, a.badge { text-decoration: none !important; }
+  h1, h2, h3 { @apply text-ink; text-wrap: balance; }
+  /* Line breaking: no one- or two-word last lines, and short links stay in one piece. */
+  @media (min-width: 640px) { main p a, main dd a, footer p a { white-space: nowrap; } }
+  :focus-visible { outline: 2px solid #111111; outline-offset: 2px; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-[1400px] px-3 sm:px-5; }
+  .card { @apply rounded-xl border border-line bg-white shadow-card; }
+  .card-h { @apply flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-3; }
+  .card-t { @apply text-[0.95rem] font-medium text-ink; }
+  .mono { @apply font-mono text-[0.8rem]; }
+  .muted { @apply text-ink-mute; }
+  .label { @apply text-ink-mute; }
+  .pill { @apply inline-flex items-center gap-1 whitespace-nowrap rounded-md border border-line bg-canvas px-2 py-0.5 text-xs text-ink; }
+  .badge { @apply inline-flex items-center gap-1 whitespace-nowrap rounded-md border px-2 py-0.5 text-xs font-medium; }
+  .badge-ok { @apply border-ok/30 bg-ok-soft text-ok; }
+  .badge-warn { @apply border-warn/30 bg-warn-soft text-warn; }
+  .badge-bad { @apply border-bad/30 bg-bad-soft text-bad; }
+  .badge-info { @apply border-line bg-brand-soft text-ink; }
+  .badge-mute { @apply border-line bg-canvas text-ink-mute; }
+  .btn { @apply inline-flex items-center justify-center gap-1.5 rounded-lg border border-line bg-white px-3 py-1.5 text-sm text-ink hover:border-ink hover:bg-canvas; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-1.5 rounded-lg bg-brand px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-dark hover:text-white; }
+  .tbl { @apply w-full text-left text-sm; }
+  .tbl th { @apply whitespace-nowrap border-b border-line bg-canvas px-4 py-2.5 text-[0.7rem] font-semibold uppercase tracking-wide text-ink-mute; }
+  .tbl td { @apply border-b border-line px-4 py-3 align-middle; }
+  .tbl th.text-right, .tbl td.text-right { @apply whitespace-nowrap tabular-nums; }
+  .tbl-fixed { @apply table-fixed; }
+  .tbl-fixed td, .tbl-fixed th { @apply overflow-hidden text-ellipsis; }
+  .tbl tr:last-child td { @apply border-b-0; }
+  .tbl tbody tr:hover td { @apply bg-canvas/60; }
+  .row { @apply grid grid-cols-1 gap-1 border-b border-line py-3 md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] md:gap-4; }
+  .row:last-child { @apply border-b-0; }
+  .input { @apply w-full rounded-lg border border-line bg-white px-3 py-2 text-sm outline-none focus:border-brand; }
+  .select { @apply rounded-lg border border-line bg-white px-2 py-2 text-sm outline-none focus:border-brand; }
+  .tab { @apply whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium text-ink hover:bg-line/60 hover:text-ink; }
+  .tab-on { @apply bg-brand text-white hover:bg-brand hover:text-white; }
+}
+
+.grid > * { min-width: 0; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
